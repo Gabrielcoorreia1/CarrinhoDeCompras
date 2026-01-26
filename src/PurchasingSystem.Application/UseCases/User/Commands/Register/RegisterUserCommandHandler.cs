@@ -36,7 +36,7 @@ namespace PurchasingSystem.Application.UseCases.User.Commands.Register
             );
 
             await _userRepository.AddAsync(user);
-            await _unitOfWork.CommitAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return user.Id;
         }

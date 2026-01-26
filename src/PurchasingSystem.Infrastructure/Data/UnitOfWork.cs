@@ -10,7 +10,7 @@ namespace PurchasingSystem.Infrastructure.Data
             _context = context;
         }
 
-        public async Task CommitAsync(CancellationToken cancellationToken)
+        public async Task SaveChangesAsync(CancellationToken cancellationToken)
         {
             await _context.SaveChangesAsync(cancellationToken);
         }

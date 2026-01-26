@@ -9,5 +9,31 @@ namespace PurchasingSystem.Infrastructure.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Cart> Carts { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            // Configurar Cart
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.HasKey(c => c.Id);
+                entity.Property(c => c.UserId).IsRequired();
+                
+                entity.OwnsMany(c => c.Items, items =>
+                {
+                    items.WithOwner().HasForeignKey("CartId");
+                    items.Property<int>("Id").ValueGeneratedOnAdd();
+                    items.HasKey("Id");
+                    items.Property(i => i.ProductId).IsRequired();
+                    items.Property(i => i.Quantity).IsRequired();
+                });
+            });
+            
+            // Configurar User
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(u => u.Id);
+            });
+        }
     }
 }

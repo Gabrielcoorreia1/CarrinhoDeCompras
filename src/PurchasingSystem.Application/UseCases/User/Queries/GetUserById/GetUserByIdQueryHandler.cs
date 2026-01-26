@@ -14,7 +14,7 @@ namespace PurchasingSystem.Application.UseCases.User.Queries.GetUserById
         }
         public async Task<GetUserByIdQueryResponse> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _repository.GetById(request.UserId, cancellationToken);
+            var user = await _repository.GetByIdAsync(request.UserId, cancellationToken);
 
             if(user is null) 
                 throw new DomainException(DomainErrors.Account.NotFound);

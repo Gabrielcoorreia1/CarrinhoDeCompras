@@ -57,7 +57,7 @@ namespace PurchasingSystem.API.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserCommand request)
         {
-            var command = new UpdateUserCommand(id, request.FirstName, request.LastName, request.Email, request.password);
+            var command = new UpdateUserCommand(id, request.FirstName, request.LastName, request.Email, request.Password);
 
             await _sender.Send(command);
 

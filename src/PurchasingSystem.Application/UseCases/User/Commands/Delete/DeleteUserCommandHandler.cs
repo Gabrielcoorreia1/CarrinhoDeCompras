@@ -25,7 +25,7 @@ namespace PurchasingSystem.Application.UseCases.User.Commands.Delete
 
             await _userRepository.Delete(user);
 
-            await _unitOfWork.CommitAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

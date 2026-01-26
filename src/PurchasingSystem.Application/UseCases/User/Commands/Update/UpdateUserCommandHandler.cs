@@ -31,9 +31,9 @@ namespace PurchasingSystem.Application.UseCases.User.Commands.Update
                 throw new DomainException(DomainErrors.Account.EmailInUse);
             }
 
-            user.Update(command.FirstName, command.LastName, command.Email, command.password);
+            user.Update(command.FirstName, command.LastName, command.Email, command.Password);
 
-            await _unitOfWork.CommitAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }
