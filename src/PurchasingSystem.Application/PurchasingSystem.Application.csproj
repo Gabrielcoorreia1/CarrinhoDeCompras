@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Cart\Queries\" />
     <Folder Include="UseCases\Items\Commands\" />
     <Folder Include="UseCases\Items\Queries\" />
   </ItemGroup>

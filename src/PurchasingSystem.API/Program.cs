@@ -1,4 +1,5 @@
 using PurchasingSystem.Api.Middleware;
+using PurchasingSystem.Application;
 using PurchasingSystem.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
