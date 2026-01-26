@@ -13,7 +13,7 @@ namespace PurchasingSystem.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
             
-            // Configurar Cart
+            // Configure Cart
             modelBuilder.Entity<Cart>(entity =>
             {
                 entity.HasKey(c => c.Id);
@@ -29,7 +29,7 @@ namespace PurchasingSystem.Infrastructure.Data
                 });
             });
             
-            // Configurar User
+            // Configure User
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(u => u.Id);
