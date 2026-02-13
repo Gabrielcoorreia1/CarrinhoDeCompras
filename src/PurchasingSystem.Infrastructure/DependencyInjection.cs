@@ -3,8 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using PurchasingSystem.Application.Services.Abstractions;
+using PurchasingSystem.Domain.Cart.Interfaces;
 using PurchasingSystem.Domain.User.Interfaces;
 using PurchasingSystem.Infrastructure.Authentication;
+using PurchasingSystem.Infrastructure.Data;
 using PurchasingSystem.Infrastructure.Data.Repositories;
 using System.Text;
 
@@ -19,8 +21,8 @@ namespace PurchasingSystem.Infrastructure
             services.AddJwtAuthentication(configuration);
 
             services.AddScoped<IUserRepository, UserRepository>();
-            // services.AddScoped<IItemRepository, ItemRepository>();
-            // services.AddScoped<IReceiptRepository, ReceiptRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

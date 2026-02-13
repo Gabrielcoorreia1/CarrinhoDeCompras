@@ -7,10 +7,13 @@ namespace PurchasingSystem.Application.UseCases.User.Commands.Register
     {
         public RegisterUserCommandValidator()
         {
-            RuleFor(x => x.Username)
-                .NotEmpty().WithErrorCode(DomainErrors.Username.Empty.Code).WithMessage(DomainErrors.Username.Empty.Message)
-                .MinimumLength(3).WithMessage("O nome de usuário deve ter no mínimo 3 caracteres.")
-                .Matches("^[a-zA-Z0-9_]+$").WithErrorCode(DomainErrors.Username.InvalidFormat.Code).WithMessage(DomainErrors.Username.InvalidFormat.Message);
+            RuleFor(x => x.FirstName)
+                .NotEmpty().WithMessage("Nome é obrigatório")
+                .MinimumLength(2).WithMessage("O nome deve ter no mínimo 2 caracteres.");
+
+            RuleFor(x => x.LastName)
+                .NotEmpty().WithMessage("Sobrenome é obrigatório")
+                .MinimumLength(2).WithMessage("O sobrenome deve ter no mínimo 2 caracteres.");
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithErrorCode(DomainErrors.Email.Empty.Code).WithMessage(DomainErrors.Email.Empty.Message)
